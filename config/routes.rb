@@ -1,15 +1,11 @@
 Rails.application.routes.draw do
 
-
- 
   namespace :admin do
-      devise_for :admins, controllers: {
+      devise_for :managers, controllers: {
       sessions: 'admins/sessions',
       registrations: 'admins/registrations',
       passwords: 'admins/passwords'
     }
-    
-    
   end
 
   scope module: 'customer' do
