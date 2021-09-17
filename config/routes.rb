@@ -1,5 +1,23 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :customers
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  namespace :admin do
+      devise_for :admins, controllers: {
+      sessions: 'admins/sessions',
+      registrations: 'admins/registrations',
+      passwords: 'admins/passwords'
+    }
+    
+    
+  end
+
+  scope module: 'customer' do
+    devise_for :customers, controllers: {
+      sessions: 'customers/sessions',
+      registrations: 'customers/registrations',
+      passwords: 'customers/passwords'
+    }
+    
+    
+  end
+  
 end
