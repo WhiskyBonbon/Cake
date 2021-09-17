@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+ 
   namespace :admin do
       devise_for :admins, controllers: {
       sessions: 'admins/sessions',
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   scope module: 'customer' do
-    devise_for :customers, controllers: {
+    devise_for :users, controllers: {
       sessions: 'customers/sessions',
       registrations: 'customers/registrations',
       passwords: 'customers/passwords'
