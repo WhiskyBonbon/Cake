@@ -21,12 +21,12 @@
           <div class="col-3">
            <div class=logo-image>
              <%= link_to root_path do %>
-               <%= image_tag 'NaganoCake_logo.jpeg', size:'250x80' %>
+               <%= image_tag 'NaganoCake_logo.jpeg', size:'220x70' %>
              <% end %>
            </div>
           </div>
 
-          <div class="col-8 offset-1">
+          <div class="col-9">
             <div class="collapse navbar-collapse">
               <% if user_signed_in? %>
                 <ul class="navbar-nav ml-auto">
@@ -34,13 +34,13 @@
                     <%= link_to "マイページ", mypage_path, class: "btn btn-outline-danger" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "商品一覧", items_path, class: "btn btn-outline-danger" %>
+                    <%= link_to "商品一覧", items_path, class: "btn btn-danger" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "カート", cart_items_path, class: "btn btn-outline-danger" %>
+                    <%= link_to "カート", cart_items_path, class: "btn btn-danger" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-outline-danger" %>
+                    <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-outline-success" %>
                   </li>
                 </ul>
               <% else %>
@@ -69,9 +69,8 @@
       <div class='search'>
         <%= form_with url: root_path, method: :get, local: true do |f| %>
             <%= f.text_field '' %>
-            <%= f.submit '●' %>
+            <%= f.submit '🔍︁' %>
         <% end %>
-
       </div>
 
     </header>
