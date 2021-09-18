@@ -31,6 +31,11 @@ class Admin::ItemsController < ApplicationController
       render :edit
     end
   end
+  
+  def index
+    @items = Item.all
+    @items = Item.page(params[:page]).per(10)
+  end
 
   private
 
