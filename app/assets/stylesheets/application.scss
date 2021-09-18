@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.nav-item {
+  padding: 15px;
+}
+
+.logo-image {
+  padding: 5px;
+}
