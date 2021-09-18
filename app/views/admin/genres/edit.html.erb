@@ -1,0 +1,13 @@
+<%= form_with model:[:admin, @genre],local: true do |f| %>
+
+  <div class="field">
+    <div><%= f.label :title, 'ジャンル名' %></div>
+    <div><%= f.text_field :name %></div>
+  </div>
+ 
+  
+ <div class="action">
+   <%= f.submit '変更を保存' %>
+ </div>
+
+<% end %>
