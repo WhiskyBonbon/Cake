@@ -4,27 +4,27 @@
 <table>
   <tbody>
     <tr>
-      <td></td>
-      <td></td>
+      <td>商品名</td>
+      <td><%= @item.name %></td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
+      <td>商品説明</td>
+      <td><%= @item.explanation %></td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
+      <td>ジャンル</td>
+      <td><%= @item.genre_name %></td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
+      <td>税込価格</br>（税抜価格）</td>
+      <td><%= @item.price %></td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
+      <td>販売ステータス</td>
+      <td><%= @item.is_active %></td>
     </tr>
     <tr>
-      <th colspan=2""><%= link_to "編集する", a %></th>
+      <th colspan=2""><%= link_to "編集する", edit_admin_item_path %></th>
     </tr>
   </tbody>
 </table>
