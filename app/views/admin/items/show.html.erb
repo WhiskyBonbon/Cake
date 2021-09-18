@@ -13,15 +13,20 @@
     </tr>
     <tr>
       <td>ジャンル</td>
-      <td><%= @item.genre_name %></td>
+      <td><%= @item.genre.name %></td>
     </tr>
     <tr>
       <td>税込価格</br>（税抜価格）</td>
-      <td><%= @item.price %></td>
+      <td><%= @item.price*1.1 %></br>（<%= @item.price %>）</td>
     </tr>
     <tr>
       <td>販売ステータス</td>
-      <td><%= @item.is_active %></td>
+      <% if @item.is_active == true %>
+        <% sale_status = "販売中" %>
+      <% else %>
+        <% sale_status = "販売停止中" %>
+      <% end %>
+      <td><%= sale_status %></td>
     </tr>
     <tr>
       <th colspan=2""><%= link_to "編集する", edit_admin_item_path %></th>
