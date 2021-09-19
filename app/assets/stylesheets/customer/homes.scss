@@ -1,3 +1,24 @@
 // Place all the styles related to the customer/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.title {
+  font-family: 'Kokoro', cursive;
+  font-size: 4rem;
+  margin: 1rem auto;
+}
+
+.caption {
+  font-family: 'Kokoro', cursive;
+  margin: auto;
+}
+
+.cap {
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.image {
+  margin: 2rem auto;
+}

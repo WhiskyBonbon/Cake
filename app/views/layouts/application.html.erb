@@ -7,9 +7,56 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet">
+
   </head>
 
+
   <body>
-    <%= yield %>
+    <div class="footerFixed">
+
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-lignt bg-lignt">
+        <div class="container-fluid">
+
+          <div class="col-3">
+           <div class=logo-image>
+             <%= link_to root_path do %>
+               <%= image_tag 'NaganoCake_logo.jpeg', size:'220x70' %>
+             <% end %>
+           </div>
+          </div>
+
+          <div class="col-9">
+            <div class="collapse navbar-collapse">
+              <%= render 'layouts/customer_header' %>  <!--顧客側ヘッダー 部分テンプレート-->
+            </div>
+          </div>
+
+        </div>
+      </nav>
+
+      <!--検索フォーム-->
+      <div class='search'>
+        <%= form_with url: root_path, method: :get, local: true do |f| %>
+            <%= f.text_field '' %>
+            <%= f.submit '🔍︁' %>
+        <% end %>
+      </div>
+
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer></footer>
+
+    </div>
   </body>
+
+
+
 </html>
