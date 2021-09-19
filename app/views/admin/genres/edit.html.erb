@@ -1,13 +1,14 @@
-<%= form_with model:[:admin, @genre],local: true do |f| %>
-
-  <div class="field">
-    <div><%= f.label :title, 'ジャンル名' %></div>
-    <div><%= f.text_field :name %></div>
+<div class="container">
+  <div class="row" style="margin:30px 50px 40px 20px">
+    <div class="col-lg-3 offset-lg-1">
+      <h3 style="background-color: #DCDCDC;vertical-align: middle;text-align: center;">ジャンル編集</h>
+    </div>
   </div>
- 
-  
- <div class="action">
-   <%= f.submit '変更を保存' %>
- </div>
-
-<% end %>
+  <%= form_with model:[:admin, @genre],local: true do |f| %>
+    <div class="row">
+      <div class="col-lg-2 d-flex  justify-content-center align-items-center center-block">ジャンル名</div>
+      <div class="col-lg-3"><%= f.text_field :name,class:"form-control"%></div>
+      <div class="col-lg-2 d-flex justify-content-center"><%= f.submit '変更を保存',class:"btn btn-success" %></div>
+    </div>
+  <% end %>
+</div>
