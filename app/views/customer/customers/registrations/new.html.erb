@@ -3,13 +3,48 @@
 <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
   <%= render "customer/customers/shared/error_messages", resource: resource %>
 
+   <div class="field">
+    <%= f.label :姓 %><br />
+    <%= f.text_field :family_name, autofocus: true %>
+  </div>
+
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :名 %><br />
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :セイ %><br />
+    <%= f.text_field :k_family_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :メイ %><br />
+    <%= f.text_field :k_first_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :郵便番号（ハイフンなし） %><br />
+    <%= f.text_field :postal_code, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :住所 %><br />
+    <%= f.text_field :address, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :電話番号（ハイフンなし） %><br />
+    <%= f.text_field :phone_number, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -22,8 +57,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録" %>
   </div>
 <% end %>
-
-<%= render "customer/customers/shared/links" %>
+<h2>すでに登録済みの方</h2>
+<%= link_to 'こちら',  new_user_session_path %>
+<br />からログインしてください。
