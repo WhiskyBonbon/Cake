@@ -12,6 +12,7 @@ class Customer::CustomersController < ApplicationController
     @customer = current_user
     @customer.update(is_deleted: true) #is_deletedをfalseからtrueへ変更し、論理削除
     reset_session #セッション情報のリセットする
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
   end
   
