@@ -2,11 +2,11 @@ class Customer::AddressesController < ApplicationController
 
   def index
     @address = Address.new
-    @addresses = Address.all
+    @addresses = Address.where(user_id: current_user.id)
   end
 
   def create
-    @address = Address.new(@address)
+    @address = Address.new(address_params)
     @address.save
     redirect_to addresses_path
   end
@@ -30,7 +30,7 @@ class Customer::AddressesController < ApplicationController
   private
 
   def address_params
-    params.require(:address).permit(:postal_code, :address, :name)
+    params.require(:address).permit(:postal_code, :address, :name ,:user_id)
   end
 
 
