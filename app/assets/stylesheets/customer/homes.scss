@@ -33,11 +33,13 @@ table.genre_search {
   margin: 3rem auto;
   table-layout: auto;
   width: 60%;
+  border-color: white;
 }
 
 .genre_search_thead {
   border: solid 3px;
   border-style: ridge;
+  border-color: white;
 }
 
 .genre_search_th {
@@ -49,11 +51,16 @@ table.genre_search {
   padding: 5px;
 }
 
-.home_body {
-  padding: 3rem;
-  width: 840px;
+.home_image {
+  width: 750px;
+  height: 450px;
+  background-color: pink;
+  margin: 3rem;
+  font-family: 'Kokoro', cursive;
+  text-align: center;
+  padding: auto;
 }
 
-img {
-  width: 100%;
+.home_text {
+  padding-top: 9rem;
 }
