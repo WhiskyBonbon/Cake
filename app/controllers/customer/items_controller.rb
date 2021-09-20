@@ -1,8 +1,7 @@
 class Customer::ItemsController < ApplicationController
 
   def index
-    @items = Item.all
-    @items = Item.page(params[:page]).per(10)
+    @items = Item.where(is_active: 1).page(params[:page]).per(10)
     @genres = Genre.all
   end
 
