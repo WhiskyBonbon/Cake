@@ -14,7 +14,24 @@
           <p>購入には会員登録が必要になります。</p>
         </div>
       </div>
+
+      <div><h2>新着商品</h2></div>
+
+      <div class="new_items">
+        <% @items.each do |item| %>
+          <div class="new_item">
+            <%= link_to item_path(item) do %>
+              <p><%= attachment_image_tag item, :image, :fill,210,140 %></p>
+              <p class="detail"><%= item.name %></p>
+              <p class="detail">¥<%= item.price %></p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="all_items"><%= link_to "全ての商品を見る➡︎", items_path, class:"btn btn-outline-primary btn-sm" %></div>
+
     </div>
-    
+
   </div>
 </div>
