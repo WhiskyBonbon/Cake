@@ -19,5 +19,10 @@ class User < ApplicationRecord
   validates :phone_number,presence: true
 
   has_many :items, through: :cart_items
-
+  
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+ #参考URLhttps://qiita.com/yuto_1014/items/358d0a425193b12c969a
+ 
 end
