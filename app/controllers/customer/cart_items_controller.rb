@@ -7,9 +7,9 @@ class Customer::CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.new(cart_item_params)
-    @cart_items = CartItem.where(customer_id: current_customer.id)
-    if cart_item.item_id == @cart_item.item_id
-      @cart_items.each do |cart_item|
+    @cart_items = CartItem.where(user_id: current_user)
+    @cart_items.each do |cart_item|
+      if cart_item.item_id == @cart_item.item_id
         new_piece = cart_item.piece + @cart_item.piece
         cart_item.update_attribute(:piece, new_piece)
         # 参考URLhttps://www.sejuku.net/blog/62009
@@ -34,7 +34,7 @@ class Customer::CartItemsController < ApplicationController
   end
 
   def all_destroy
-    cart_items = CartItem.where(customer_id: current_customer.id)
+    cart_items = CartItem.where(user_id: current_user)
     cart_items.destroy_all
     # 参考https://pikawaka.com/rails/destroy_all
     redirect_to cart_items_path
@@ -43,7 +43,7 @@ class Customer::CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :customer_id, :piece)
+    params.require(:cart_item).permit(:item_id, :user_id, :piece)
   end
 
 end

@@ -4,9 +4,14 @@
     <%#= render "customer/items/search" genres: @genres %>
   </table>
 </div>
-<%= attachment_image_tag @item, :image, :fill, 200, 200, format: 'jpg' %>
-<h2><%= @item.name %></h2>
-<p><%= @item.explanation %></p>
-<h3>¥ <%= @item.price*1.10 %><p>（税込）</p></h3>
-
-<%= link_to "カートに入れる", cart_items_path, method: :post %>
+<%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
+  <%= attachment_image_tag @item, :image, :fill, 200, 200, format: 'jpg' %>
+  <h2><%= @item.name %></h2>
+  <p><%= @item.explanation %></p>
+  <h3>¥ <%= (@item.price*1.10).round.to_s %><p>（税込）</p></h3>
+  <!--参考：https://sakurawi.hateblo.jp/entry/hidden_field-->
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :item_id, :value => @item.id %>
+  <%= f.select :piece, @number %>
+  <%= f.submit "カートに入れる" %>
+<% end %>
