@@ -1,0 +1,19 @@
+<%= form_with model: address, local:true do |f| %>
+    <p>
+      <%= f.label :郵便番号（ハイフンなし） %>
+      <%= f.text_field :postal_code %>
+    </p>
+
+    <p>
+      <%= f.label :住所 %>
+      <%= f.text_field :address %>
+    </p>
+
+    <p>
+      <%= f.label :宛名 %>
+      <%= f.text_field :name %>
+    </p>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.submit '新規登録', class: "btn btn-sm btn-success" %>
+
+  <% end %>

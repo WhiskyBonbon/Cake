@@ -1,0 +1,17 @@
+<div>
+  <p>ジャンル検索</p>
+  <table>
+    <%#= render "customer/items/search" genres: @genres %>
+  </table>
+</div>
+<h2>商品一覧（全<%= @items.count %>件）</h2>
+<% @items.each do |item| %>
+  <div>
+    <%= link_to item_path(item) do %>
+      <%= attachment_image_tag item, :image, :fill, 200, 200, format: 'jpg' %>
+      <%= item.name %>
+      <%= item.price %>
+    <% end %>
+  </div>
+<% end %>
+<%= paginate @items %>
