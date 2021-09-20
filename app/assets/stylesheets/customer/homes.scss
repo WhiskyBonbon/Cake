@@ -21,9 +21,11 @@
 
 .image {
   margin: 2rem auto;
+  border: solid 1px;
+  border-style: ridge;
 }
 
-table {
+table.genre_search {
   border-collapse: collapse;
   text-align: center;
   border: solid 3px;
@@ -33,16 +35,25 @@ table {
   width: 60%;
 }
 
-table thead {
+.genre_search_thead {
   border: solid 3px;
   border-style: ridge;
 }
 
-table th {
+.genre_search_th {
   background-color: #fce043;
   padding: 3px;
 }
 
-table td {
+.genre_search_td {
   padding: 5px;
+}
+
+.home_body {
+  padding: 3rem;
+  width: 840px;
+}
+
+img {
+  width: 100%;
 }
