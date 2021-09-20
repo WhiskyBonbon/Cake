@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     devise_for :managers, controllers: {
-      sessions: 'admin/admins/sessions',
-      registrations: 'admin/admins/registrations',
-      passwords: 'admin/admins/passwords'
+      sessions: 'admins/sessions',
+      registrations: 'admins/registrations',
+      passwords: 'admins/passwords'
     }
     resources :items, except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
@@ -15,9 +15,9 @@ Rails.application.routes.draw do
 
   scope module: 'customer' do
     devise_for :users, controllers: {
-      sessions: 'customer/customers/sessions',
-      registrations: 'customer/customers/registrations',
-      passwords: 'customer/customers/passwords'
+      sessions: 'customers/sessions',
+      registrations: 'customers/registrations',
+      passwords: 'customers/passwords'
     }
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:create, :index, :update, :destroy]
