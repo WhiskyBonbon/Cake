@@ -39,14 +39,14 @@
 }
 
 .navbar {
-  margin: -2px -14px ;
+  margin: -2px 0px ;
 }
 
 footer {
   position: absolute;
   width: 100%;
   bottom: 0;
-  height: 90px;
+  height: 70px;
   border-top-style: ridge;
   border-top-color: #FF9999;
 }
@@ -56,4 +56,8 @@ footer {
   position: relative;
   box-sizing: border-box;
   padding-bottom: 100px;
+}
+
+.nav-item {
+  font-family:Droid Sans;
 }
