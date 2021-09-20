@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     devise_for :users, controllers: {
       sessions: 'customer/customers/sessions',
       registrations: 'customer/customers/registrations',
-      passwords: 'customer/customers/passwords'
+      passwords: 'customers/passwords'
     }
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:create, :index, :update, :destroy]
@@ -33,8 +33,6 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
   end
-
-
-
+  
 
 end

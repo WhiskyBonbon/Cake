@@ -1,0 +1,51 @@
+<h3 style="margin:20px 0px 20px 200px;">マイページ</h3>
+<div class="container-fluid">
+  <div class="row">
+    <h4 style="width: 120px; margin:0px 0px 0px 45px;">登録情報</h4><%= link_to "編集する", customers_path, class: "btn btn-success" %>
+  </div>
+<div>
+  
+</br>
+
+<div class="col-7 ml-3">
+  <table class="table table-bordered">
+    <tr>
+      <td style="width: 200px;background-color: #DCDCDC;">氏名</td>
+      <td><%= "#{@customer.family_name}　#{@customer.first_name}"  %></td>
+    </tr>
+    <tr>
+        <td style="background-color: #DCDCDC">カナ</td>
+        <td><%= "#{@customer.k_family_name}　#{@customer.k_first_name}" %></td>
+    </tr>
+    <tr>
+      <td style="background-color: #DCDCDC">郵便番号</td>
+      <td><%= @customer.postal_code %></td>
+    </tr>
+      <tr>
+        <td style="background-color: #DCDCDC">住所</td>
+        <td><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <td style="background-color: #DCDCDC">電話番号</td>
+      <td><%= @customer.phone_number %></td>
+    </tr>
+    <tr>
+      <td style="background-color: #DCDCDC">メールアドレス</td>
+      <td><%= @customer.email %></td>
+    </tr>
+  </table>
+</div>
+
+<br>
+    
+<div class="container-fluid">
+  <div class="row">
+    <h4 style="width: 120px; margin:0px 0px 0px 35px;">配送先</h4>
+    <div><%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %></div>
+  </div>
+  </br>
+  <div class="row">
+    <h4 style="width: 120px; margin:0px 0px 0px 35px;">注文履歴</h4>
+    <div><%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></div>
+  </div>
+</div>
