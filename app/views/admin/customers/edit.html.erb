@@ -2,17 +2,40 @@
   <div class="row">
     <h4 class="cus_name"><%= @customer.family_name %><%= @customer.first_name %> さんの会員情報編集</h4>
   </div>
-  
-  <div class="row">
-    <table class="cus_infoTable">
-      <tr><td>会員ID</td><td><%= @customer.id %></td></tr>
-      <tr><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td></tr>
-      <tr><td></td><td></td><td></td></tr>
-    </table>
-  </div>
+
+  <%= form_with model: @customer,url: admin_customer_path, local: true do |f| %>
+    <div class="row">
+      <table class="cus_infoTable">
+        <tr><td>会員ID</td><td><%= @customer.id %></td></tr>
+        <tr>
+          <td>氏名</td>
+          <td><%= f.text_field :family_name, class:"form-control" %></td>
+          <td><%= f.text_field :first_name, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <td>フリガナ</td>
+          <td><%= f.text_field :k_family_name, class:"form-control" %></td>
+          <td><%= f.text_field :k_first_name, class:"form-control" %></td>
+        </tr>
+        <tr><td>郵便番号</td><td><%= f.text_field :postal_code, class:"form-control" %></td></tr>
+        <tr><td>住所</td><td><%= f.text_field :address, class:"form-control" %></td></tr>
+        <tr><td>電話番号</td><td><%= f.text_field :phone_number, class:"form-control" %></td></tr>
+        <tr><td>メールアドレス</td><td><%= f.text_field :email, class:"form-control" %></td></tr>
+        <tr>
+          <td>会員ステータス</td>
+          <td>
+            <%= f.radio_button :is_deleted, false %>
+            <%= f.label :is_deleted, '有効', value: false %>
+            <%= f.radio_button :is_deleted, true %>
+            <%= f.label :is_deleted, '退会', value: true %>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="row">
+      <p class="submit_btn"><%= f.submit '変更を保存', class:"btn btn-success btn-sm" %></p>
+    </div>
+  <% end %>
+
 </div>

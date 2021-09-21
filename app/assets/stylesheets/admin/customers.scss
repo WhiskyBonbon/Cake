@@ -18,6 +18,10 @@
   padding-bottom: 1rem;
 }
 
+.cus_infoTable label {
+  padding-right: 1rem;
+}
+
 .cus_items {
   display: flex;
   margin-left: 12.2rem;
@@ -25,4 +29,8 @@
 
 .cus_item {
   padding: 1rem;
+}
+
+.submit_btn {
+  padding: 1rem 13.3rem;
 }
