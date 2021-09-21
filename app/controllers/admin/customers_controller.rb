@@ -8,4 +8,8 @@ class Admin::CustomersController < ApplicationController
     @customer = User.find(params[:id])
   end
   
+  def edit
+    
+  end
+  
 end
