@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:create, :index, :update, :destroy]
     delete '/cart_items' => 'cart_items#all_destroy', as: 'all_destroy'
     resources :orders, only: [:new, :create, :index, :show]
+    get 'orders/check' => 'orders#check'
     post 'orders/check' => 'orders#check', as: 'check'
     get 'orders/thanks' => 'orders#thanks', as: 'thanks'
     resource :customers, only: [:edit, :update]
@@ -33,6 +34,6 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
   end
-  
+
 
 end

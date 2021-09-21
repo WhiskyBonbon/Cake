@@ -1,0 +1,48 @@
+<%= form_with model:@order, url: orders_check_path do |f|%>
+<%= f.label :check, "注文情報確認" %>
+ <div class="col-lg-8">
+  <table class='table table-bordered'>
+   <thead>
+     <tr>
+       <th>商品名</th>
+       <th>単価（税込）</th>
+       <th>数量</th>
+       <th>小計</th>
+     </tr>
+   </thead>
+   <tbody>
+     <% @sum = 0 %>
+     <% @cart_items.each do |cart_item| %>
+     <tr>
+      <td><%= cart_item.item.name %></td>
+      <td><%= (cart_item.item.price*1.1).round.to_s %>円</td>
+      <td><%= cart_item.piece %>個</td>
+      <td><%= (cart_item.item.price*1.1*cart_item.piece).round.to_s %>円</td>
+          <% @sum += (cart_item.item.price*1.1*cart_item.piece).round %>
+     </tr>
+    <% end %>
+   </tbody>
+  </table>
+ </div>
+
+ <div class="col-lg-4">
+  <table class='table table-bordered'>
+   <thead>
+    <tr>
+     <th>送料</th>
+     <th>商品合計</th>
+     <th>請求額金額</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td><%= @postage %>円</td>
+     <td><%= @total_price %>円</td>
+     <td><%= @all_price %>円</td>
+    </tr>
+   </tbody>
+  </table>
+ </div>
+ <%= f.label :address_option, "お届け先" %>
+ <%= address_option %>
+ <% end %>
