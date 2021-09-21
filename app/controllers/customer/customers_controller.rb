@@ -23,9 +23,10 @@ class Customer::CustomersController < ApplicationController
   def update
     @customer = current_user
     @customer.update(customer_path)
-    flash[:notice] = 'You have updated customer successfully'
+    flash[:notice] = '登録情報を更新しました'
     redirect_to mypage_path
   end
+  
   
   
   private
