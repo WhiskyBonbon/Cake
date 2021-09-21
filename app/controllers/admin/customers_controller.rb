@@ -9,7 +9,7 @@ class Admin::CustomersController < ApplicationController
   end
   
   def edit
-    
+    @customer = User.find(params[:id])
   end
   
 end
