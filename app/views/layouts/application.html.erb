@@ -41,7 +41,7 @@
       <!--検索フォーム-->
       <div class='search'>
         <%= form_with url: root_path, method: :get, local: true do |f| %>
-            <%= f.text_field '' %>
+            <%= f.text_field '', placeholder:"Search" %>
             <%= f.submit '🔍︁' %>
         <% end %>
       </div>
