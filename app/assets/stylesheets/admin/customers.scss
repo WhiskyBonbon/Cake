@@ -1,3 +1,28 @@
 // Place all the styles related to the admin/customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.cus_name {
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+
+.cus_infoTable {
+  margin-left: 2rem;
+  border-collapse: separate;
+}
+
+.cus_infoTable td {
+  font-size: 1rem;
+  padding-left: 2rem;
+  padding-bottom: 0.5rem;
+}
+
+.cus_items {
+  display: flex;
+  margin-left: 12.2rem;
+}
+
+.cus_item {
+  padding: 1rem;
+}
