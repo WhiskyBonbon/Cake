@@ -1,0 +1,28 @@
+.login_title {
+  margin:2rem ;
+  background-color: #DDDDDD;
+  width: 13rem;
+  text-align: center;
+}
+
+.form-group {
+  margin: 1rem auto;
+  padding-right: 18rem;
+}
+
+.field {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  display: flex;
+  white-space: nowrap;
+}
+
+.field label {
+  padding-right: 6rem;
+  width: 10rem;
+}
+
+.actions {
+  margin-left: 10rem;
+  padding-top: 0.5rem;
+}
