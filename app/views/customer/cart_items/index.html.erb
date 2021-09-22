@@ -1,8 +1,10 @@
 <h2>ショッピングカート</h2>
-<div class="container">
+<div class="container cart_items-all">
   <div class="row">
     <%= link_to "カートを空にする", all_destroy_path, method: :delete, class: "btn btn-danger" %>
-    <table class="table table-bordered table-hover ">
+    </div>
+    <div class="row">
+    <table class="table table-bordered table-hover">
       <thead>
         <tr class="table-active">
           <td style="width:40%">商品名</td>
@@ -41,7 +43,7 @@
     </tr>
     </table>
   </div>
-  <span class="container-item">
+  <span class="container-item row">
     <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success"  %>
   </span>
 </div>
