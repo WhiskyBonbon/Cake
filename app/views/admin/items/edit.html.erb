@@ -1,46 +1,48 @@
-<h2>商品編集</h2>
-<% if @item.errors.any? %>
-  <%= @item.errors.count %>errors prohimited this obj from being saved:
-  <% @item.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+<div class="regi-new-item">
+  <h2 class="regi-new-item-title">商品編集</h2>
+  <% if @item.errors.any? %>
+    <%= @item.errors.count %>errors prohimited this obj from being saved:
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
   <% end %>
-<% end %>
-<%= form_with model:@item, url:admin_item_path, local:true do |f| %>
-  <table>
-    <tbody>
-      <tr>
-        <td>商品画像</td>
-        <td><%= f.attachment_field :image %></td>
-      </tr>
-      <tr>
-        <td>商品名</td>
-        <td><%= f.text_field :name %></td>
-      </tr>
-      <tr>
-        <td>商品説明</td>
-        <td><%= f.text_area :explanation, cols:'30', rows:'5' %></td>
-      </tr>
-      <tr>
-        <td>ジャンル</td>
-        <td><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
-      </tr>
-      <tr>
-        <td>税抜価格</td>
-        <td><%= f.text_field :price %></td>
-      </tr>
-      <tr>
-        <td>販売ステータス</td>
-        <td>
-          <%= f.radio_button :is_active, true %>
-          <%= f.label :is_active, "販売中", {value: :true} %>
-          <%= f.radio_button :is_active, false %>
-          <%= f.label :is_active, "販売停止中", {value: :false} %>
-          <!--↑参考URL：https://techacademy.jp/magazine/22208-->
-        </td>
-      </tr>
-      <tr>
-        <td><%= f.submit '変更を保存' %></td>
-      </tr>
+  <%= form_with model:@item, url:admin_item_path, local:true do |f| %>
+    <table class="new-item-table table table-borderless">
+      <tbody>
+        <tr>
+          <td style="width:80px">商品画像</td>
+          <td style="width:500px"><%= f.attachment_field :image %></td>
+        </tr>
+        <tr>
+          <td>商品名</td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr valign="top">
+          <td>商品説明</td>
+          <td><%= f.text_area :explanation, cols:'30', rows:'5' %></td>
+        </tr>
+        <tr>
+          <td>ジャンル</td>
+          <td><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
+        </tr>
+        <tr>
+          <td>税抜価格</td>
+          <td><%= f.text_field :price %></td>
+        </tr>
+        <tr>
+          <td>販売ステータス</td>
+          <td>
+            <%= f.radio_button :is_active, true %>
+            <%= f.label :is_active, "販売中", {value: :true} %>
+            <%= f.radio_button :is_active, false %>
+            <%= f.label :is_active, "販売停止中", {value: :false} %>
+            <!--↑参考URL：https://techacademy.jp/magazine/22208-->
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><%= f.submit '変更を保存' %></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
-<% end %>
+</div>
