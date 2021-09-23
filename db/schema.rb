@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(version: 2021_09_21_071418) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "address_option", default: 0
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,21 +1,48 @@
 class Customer::OrdersController < ApplicationController
 
   def new
-    @order = Order.new
     @user = current_user
+    @order = Order.new
   end
 
   def create
+    @user = current_user
     @order = Order.new(order_params)
-    @order.save
-    redirect_to check_path
+    if @order.save
+       @cart_items = current_user.cart_items.all
+        @cart_items.each do |cart_item|
+        @order_items = @order.order_items.new
+        @order_items.item_id = cart_item.item.id
+        @order_items.price = cart_item.item.price
+        @order_items.piece = cart_item.piece
+        @order_item.save
+        current_user.cart_items.destroy_all
+      end
+      redirect_to thanks_path
+    else
+      render :new
+    end
   end
 
   def check
+    @user = current_user
+    @order = Order.new(order_params)
+    @order.user_id = current_user.id
+    @order.postage = 800
     @cart_items = CartItem.where(user_id: current_user.id)
-    @postage = 800
-    @total_price = 
-    @all_price = 800 + 200
+
+    if params[:order][:address_option] == "0"
+      @order.postal_code = @user.postal_code
+      @order.address = @user.address
+      @order.name = @user.family_name + @user.first_name
+    elsif params[:order][:address_option] == "1"
+      @address = Address.find(params[:order][:address_id])
+      @order.postal_code= @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    else
+      
+    end
   end
 
 
@@ -31,7 +58,7 @@ class Customer::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:user_id, :postal_code, :address, :name, :payment_method, :order_amount, :postage)
+    params.require(:order).permit(:user_id, :postal_code, :address, :name, :payment_method, :order_amount, :postage, :status)
   end
 
 end
