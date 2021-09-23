@@ -1,18 +1,21 @@
-<div class="row">
+<div class="row container-fluid">
   <div class="col-3">
     <%= render "customer/items/search", genres: @genres %>
   </div>
-  <h2>商品一覧（全<%= @items.count %>件）</h2>
-  <div class="index-item col-9">
-    <% @items.each do |item| %>
-      <%= link_to item_path(item) do %>
-        <div class="container-item"><%= attachment_image_tag item, :image, :fill, 200, 200, format: 'jpg' %></div>
-        <div class="container-item">
-          <p><%= item.name %></p>
-          <p><%= item.price %></p>
+
+  <div class="col-9">
+    <h2>商品一覧（全<%= @items.count %>件）</h2>
+    <div class="new-items">
+      <% @items.each do |item| %>
+        <div class="new-item">
+          <%= link_to item_path(item) do %>
+            <p><%= attachment_image_tag item, :image, :fill, 210, 140, format: 'jpg' %></p>
+            <p class="detail"><%= item.name %></p>
+            <p class="detail">¥ <%= item.price %></p>
+          <% end %>
         </div>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
-<%= paginate @items %>
+<div class="next-items"><%= paginate @items %></div>
