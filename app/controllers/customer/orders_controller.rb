@@ -9,15 +9,17 @@ class Customer::OrdersController < ApplicationController
     @user = current_user
     @order = Order.new(order_params)
     if @order.save
-       @cart_items = current_user.cart_items.all
+
+       @cart_items = CartItem.where(user_id: current_user.id)
         @cart_items.each do |cart_item|
         @order_items = @order.order_items.new
         @order_items.item_id = cart_item.item.id
-        @order_items.price = cart_item.item.price
+        @order_items.taxed_price = cart_item.item.price
         @order_items.piece = cart_item.piece
-        @order_item.save
-        current_user.cart_items.destroy_all
+        @order_items.save
+        @cart_items.destroy_all
       end
+
       redirect_to thanks_path
     else
       render :new
@@ -41,7 +43,7 @@ class Customer::OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
     else
-      
+
     end
   end
 

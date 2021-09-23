@@ -22,9 +22,9 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:create, :index, :update, :destroy]
     delete '/cart_items' => 'cart_items#all_destroy', as: 'all_destroy'
-    resources :orders, only: [:new, :create, :index, :show]
     post 'orders/check' => 'orders#check', as: 'check'
     get 'orders/thanks' => 'orders#thanks', as: 'thanks'
+    resources :orders, only: [:new, :create, :index, :show]
     resource :customers, only: [:edit, :update]
     get 'customers/mypage' => 'customers#show', as: 'mypage'
     get 'customers/delete' => 'customers#delete', as: 'delete'
