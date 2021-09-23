@@ -14,11 +14,12 @@ class Customer::OrdersController < ApplicationController
         @cart_items.each do |cart_item|
         @order_items = @order.order_items.new
         @order_items.item_id = cart_item.item.id
-        @order_items.taxed_price = cart_item.item.price
+        @order_items.taxed_price = cart_item.item.price*1.1
         @order_items.piece = cart_item.piece
         @order_items.save
         @cart_items.destroy_all
       end
+      
 
       redirect_to thanks_path
     else
@@ -52,9 +53,11 @@ class Customer::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.where(user: current_user)
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   private
