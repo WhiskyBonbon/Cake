@@ -12,37 +12,37 @@
         <div class="customer_field_name">
           <%= f.label "名前" %>
           <span class="span_name">(姓)</span>
-          <%= f.text_field :family_name, autofocus: true %>
+          <%= f.text_field :family_name, autofocus: true, placeholder:"山田" %>
           <span class="span_name1">(名)</span>
-          <%= f.text_field :first_name, autofocus: true %>
+          <%= f.text_field :first_name, autofocus: true, placeholder:"花子" %>
         </div>
 
         <div class="customer_field_name">
           <%= f.label "フリガナ" %>
           <span class="span_name">(セイ)</span>
-          <%= f.text_field :k_family_name, autofocus: true %>
+          <%= f.text_field :k_family_name, autofocus: true, placeholder:"ヤマダ" %>
           <span class="span_name1">(メイ)</span>
-          <%= f.text_field :k_first_name, autofocus: true %>
+          <%= f.text_field :k_first_name, autofocus: true, placeholder:"ハナコ" %>
         </div>
 
         <div class="customer_field">
           <%= f.label "メールアドレス" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com" %>
         </div>
 
         <div class="customer_field">
           <%= f.label "郵便番号（ハイフンなし）" %><br />
-          <%= f.text_field :postal_code, autofocus: true %>
+          <%= f.text_field :postal_code, autofocus: true, placeholder:"0000000" %>
         </div>
 
         <div class="customer_field">
           <%= f.label "住所" %><br />
-          <%= f.text_field :address, autofocus: true %>
+          <%= f.text_field :address, autofocus: true, placeholder:"東京都渋谷区代々木神園0-0", class:"form-control, col-lg-7" %>
         </div>
 
         <div class="customer_field">
           <%= f.label "電話番号（ハイフンなし）" %><br />
-          <%= f.text_field :phone_number, autofocus: true %>
+          <%= f.text_field :phone_number, autofocus: true, placeholder:"0000000000" %>
         </div>
 
         <div class="customer_field">
