@@ -4,11 +4,11 @@
   </div>
   <div class="col-9">
     <%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
-    <div class="container">
-      <div class = "container-image">
+    <div class="container-show">
+      <div class = "container-show-image">
         <p><%= attachment_image_tag @item, :image, :fill, 200, 200, format: 'jpg' %></p>
       </div>
-      <div class="container-text">
+      <div class="container-show-text">
         <h3 class="detail-text detail-text-title"><%= @item.name %><h3>
         <p class="detail-text detail-text-body"><%= @item.explanation %></p>
         <p class="detail-text detail-text-body">¥ <%= (@item.price*1.10).round.to_s %>（税込）<p>
