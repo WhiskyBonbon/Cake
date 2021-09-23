@@ -2,9 +2,40 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.cart_items-all {
-    // display: flex;
-    margin: 20px auto;
-    text-align: center;
+
+.cart_items-top {
+  margin: 20px auto;
+  text-align: center;
 }
 
+.cart_items-table {
+  text-align: center;
+  margin: 5px auto;
+}
+
+.cart_items-info {
+  margin: 5px auto;
+}
+
+.total-price {
+  width: 400px;
+  height: 30px;
+  border-color: grey;
+  border-style: solid;
+  border-width: 0.5px;
+}
+
+.next-item {
+  text-align: center;
+  width: 160px;
+  height: 30px;
+}
+
+.total-price-price {
+  text-align: center;
+  width: 100px;
+}
+
+.cart_items-order {
+
+}

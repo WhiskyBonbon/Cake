@@ -1,17 +1,18 @@
-<h2>商品新規登録</h2>
+<div class="regi-new-item">
+<h2 class="regi-new-item-title">商品新規登録</h2>
 <% if @item.errors.any? %>
   <%= @item.errors.count %>errors prohimited this obj from being saved:
   <% @item.errors.full_messages.each do |message| %>
     <li><%= message %></li>
   <% end %>
 <% end %>
-<table>
+<table class="new-item-table table table-borderless">
   <tbody>
     <%= form_with model: @item, url:admin_items_path, local:true do |f| %>
     <!--https://qiita.com/ki_87/items/1ca083e4b7db460c76ea-->
     <tr>
-      <td>商品画像</td>
-      <td><%= f.attachment_field :image %></td>
+      <td style="width:80px">商品画像</td>
+      <td style="width:500px"><%= f.attachment_field :image %></td>
     </tr>
     <tr>
       <td>商品名</td>
@@ -46,3 +47,4 @@
     <% end %>
   </tbody>
 </table>
+</div>
