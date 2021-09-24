@@ -1,11 +1,11 @@
 <%= form_with model: @order, url: check_path, local:true do |f| %>
 <%= f.label :payment, "支払い方法" %>
 <br>
-<%= f.radio_button :payment_method, :"0" %>
-<%= f.label :payment_method, "銀行振込", {value: :"0", style: "display: inline-block;"} %>
+<%= f.radio_button :payment_method, :クレジットカード %>
+<%= f.label :payment_method, "クレジットカード", {value: :"0" , style: "display: inline-block;"} %>
 <br>
-<%= f.radio_button :payment_method, :"1" %>
-<%= f.label :payment_method, "クレジットカード", {value: :"1", style: "display: inline-block;"} %>
+<%= f.radio_button :payment_method, :銀行振込 %>
+<%= f.label :payment_method, "銀行振込", {value: :"1", style: "display: inline-block;"} %>
 <br>
 
 <h2>お届け先</h2>
