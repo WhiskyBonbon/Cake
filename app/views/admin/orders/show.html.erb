@@ -1,0 +1,52 @@
+<h2>注文履歴詳細</h2>
+<%= form_with model:[:admin, @order], method: :patch, local:true do |f| %>
+
+  <p>購入者</p>
+  <%= @order.name %>
+
+  <p>注文日</p>
+  <%= @order.created_at.strftime('%y/%m/%d') %>
+
+  <p>配達先</p>
+  <%= @order.postal_code %><%= @order.address %>
+  <%= @order.name %>
+
+  <p>支払方法</p>
+  <%= @order.payment_method %>
+
+  <p>注文ステータス</p>
+  <%= f.select :status, Order.statuses.keys.map {|k| [t("orders.status.#{k}"), k]},class: "select-default" %>
+  <%#= f.collection_select :status, Order.statuses.keys, {}, class: "select-default" %>
+  <%= f.submit '更新', class: "btn btn-success" %>
+<% end %>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>制作ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_items.each do |order_item| %>
+    <tr>
+      <td><%= order_item.item.name %></td>
+      <td><%= order_item.taxed_price %></td>
+      <td><%= order_item.piece %></td>
+      <td><%= order_item.taxed_price * order_item.piece %></td>
+      <td>
+        <%#= f.select :production_status, order_item.production_status.keys.to_a, include_blank: true %>
+      </td>
+    </tr>
+     <% end %>
+  </tbody>
+</table>
+
+<p>商品合計</p>
+<p>配達送料</p>
+<%= @order.postage %>円
+<p>請求額合計</p>
+<%= @order.order_amount %>円

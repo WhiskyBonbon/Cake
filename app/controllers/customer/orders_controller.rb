@@ -19,8 +19,6 @@ class Customer::OrdersController < ApplicationController
         @order_items.save
         @cart_items.destroy_all
       end
-      
-
       redirect_to thanks_path
     else
       render :new
