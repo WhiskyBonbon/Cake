@@ -10,13 +10,15 @@ class Admin::OrdersController < ApplicationController
     @order.update(order_params)
     redirect_to admin_order_path
   end
-end
 
-def order_params
-  params.require(:order).permit(:status)
-  
   def index
     @orders = Order.page(params[:page]).reverse_order
+  end
+
+private
+  
+  def order_params
+    params.require(:order).permit(:status)
   end
   
 end
