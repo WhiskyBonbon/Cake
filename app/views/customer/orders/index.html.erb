@@ -1,55 +1,40 @@
 <div class="container">
 　<div class="row" style="margin:30px 50px 40px 20px">
-<<<<<<< HEAD
     <div class="col-lg-4">
-=======
-    <div class="col-lg-4 offset-lg-1">
->>>>>>> origin/develop
       <h3 style="background-color: #DCDCDC;vertical-align: middle;text-align: center;">注文履歴一覧</h>
     </div>
   </div>
-
-<<<<<<< HEAD
   <div class="row" style="margin:30px 50px 40px 20px">
-=======
-  <div class="row">
-    <div class="mx-auto">
->>>>>>> origin/develop
-      <div class="col-lg-12">
-        <table class="table">
-          <thead class="thead-light">
+    <div class="col-lg-12">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>注文日</th>
+            <th>配送先</th>
+            <th>注文商品</th>
+            <th>支払金額</th>
+            <th>ステータス</th>
+            <th>注文詳細</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <% @orders.each do|order| %>
             <tr>
-              <th>注文日</th>
-              <th>配送先</th>
-              <th>注文商品</th>
-              <th>支払金額</th>
-              <th>ステータス</th>
-              <th>注文詳細</th>
+              <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+              <td><%= order.address %></td>
+              <% order.order_items.each do |order_item| %></td>
+              <td>
+                <%= order_item.item.name %>
+              </td>
+              <% end %>
+              <td><%= "#{order.order_amount.to_s(:delimited)}円" %></td>
+              <td><%= order.status %></td>
+              <td><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
             </tr>
-          </thead>
-
-          <tbody>
-            <% @orders.each do|order| %>
-              <tr>
-                <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-                <td><%= order.address %></td>
-                <% order.order_items.each do |order_item| %></td>
-                  <td>
-                    <%= order_item.item.name %>
-                  </td>
-                <% end %>
-                <td><%= "#{order.order_amount.to_s(:delimited)}円" %></td>
-                <td><%= order.status %></td>
-                <td><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-<<<<<<< HEAD
-</div>
-=======
   </div>
 </div>
->>>>>>> origin/develop
