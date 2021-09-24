@@ -1,2 +1,59 @@
 <h2>注文履歴詳細</h2>
-<%= form_with model: order, local:true do |f| %>
+<%= form_with model:[:admin, @order], local:true do |f| %>
+
+  <p>購入者</p>
+  <%= @order.name %>
+
+  <p>注文日</p>
+  <%= @order.created_at.strftime('%y/%m/%d') %>
+
+  <p>配達先</p>
+  <%= @order.postal_code %><%= @order.address %>
+  <%= @order.name %>
+
+  <p>支払方法</p>
+  <% if @order.payment_method == 0 %>
+     クレジットカード
+  <% elsif %>
+     銀行振込
+  <% end %>
+
+  <p>注文ステータス</p>
+  <%#= f.select :status ,options_for_select([['入金待ち', 0], ['入金確認', 1], ['製作中', 2], ['発送準備中', 3], ['発送中', 4]], selected: @order.status %>
+  <%#= f.submit "更新", class:'btn btn-success' %>
+
+<% end %>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>制作ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_items.each do |order_item| %>
+    <tr>
+      <td><%= order_item.item.name %></td>
+      <td><%= order_item.item.price %></td>
+      <td><%= order_item.piece %></td>
+      <td><%= order_item.item.price * order_item.piece %></td>
+      <td>
+        <%= form_with model:@admin, local:true do |f| %>
+        <%= f.select :status ,options_for_select([['着手不可', 0], ['製作待ち', 1], ['製作中', 2], ['製作完了', 3]], selected: order_item.production_status) %>
+        <%= f.submit "更新", class:'btn btn-success btn-sm bottom_order1' %>
+        <% end %>
+      </td>
+    </tr>
+     <% end %>
+  </tbody>
+</table>
+
+<p>商品合計</p>
+<p>配達送料</p>
+<%= @order.postage %>円
+<p>請求額合計</p>
+<%= @order.order_amount %>
