@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
   #     items_path
   #   end
   # end
-  before_action :authenticate_user!, except: [:top, :about]
+  
+  # before_action :authenticate_user!, except: [:top, :about]
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
 
