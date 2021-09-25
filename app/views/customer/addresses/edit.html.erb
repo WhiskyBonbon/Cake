@@ -1,19 +1,25 @@
-<h2>配送先編集</h2>
+<div class="container">
+  <div class="row" style="margin:30px 50px 40px 20px">
+    <div class="col-lg-4 offset-lg-1">
+      <h3 style="background-color: #FFE28C;vertical-align: middle;text-align: center;">配送先編集</h3>
+    </div>
+  </div>
 <%= form_with model: @address, local:true do |f| %>
-    <p>
-      <%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
-      <%= f.text_field :postal_code %>
-    </p>
-
-    <p>
-      <%= f.label :address, "住所" %>
-      <%= f.text_field :address %>
-    </p>
-
-    <p>
-      <%= f.label :name, "宛名" %>
-      <%= f.text_field :name %>
-    </p>
-
-      <%= f.submit '変更内容を保存', class: "btn btn-sm btn-success" %>
+  <table>
+    <tr>
+      <th>郵便番号（ハイフンなし）</th>
+      <td style="padding-left:100px"><%= f.text_field :postal_code %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td style="padding-left:100px"><%= f.text_field :address %></td>
+    </tr>
+    <tr>
+      <th>宛名</th>
+      <td style="padding-left:100px"><%= f.text_field :name %></td>
+      <td style="padding-left:20px">
+        <%= f.submit '変更内容を保存', class: "btn btn-sm btn-success" %>
+    </tr>
+  </table>
 <% end %>
+</div>
