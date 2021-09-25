@@ -36,16 +36,16 @@
     <div class="col-lg-3">
      <table class="table table-bordered">
          <tr>
-           <th style="background-color: #FFE28C;">送料</th>
+           <th style="background-color: lightblue;">送料</th>
            <td><%= @order.postage %>円</td>
          </tr>
          <tr>
-           <th style="background-color: #FFE28C;">商品合計</th>
+           <th style="background-color: lightblue;">商品合計</th>
            <td><%= sum %>円</td>
          </tr>
          <tr>
            <% @order.order_amount = sum + @order.postage %>
-           <th style="background-color: #FFE28C;">請求額</th>
+           <th style="background-color: lightblue;">請求額</th>
            <td><%= @order.order_amount %>円</td>
          </tr>
       </table>
