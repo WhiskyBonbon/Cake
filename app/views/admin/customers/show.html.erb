@@ -34,7 +34,7 @@
       <%= link_to "編集する", edit_admin_customer_path(@customer), class:"btn btn-success btn-sm" %>
     </div>
     <div class="cus_item">
-      <%= link_to "注文履歴一覧を見る", admin_orders_path, class:"btn btn-primary btn-sm" %>
+      <%= link_to "注文履歴一覧を見る", admin_orders_path(id:@customer.id), class:"btn btn-primary btn-sm" %>
     </div>
     </div>
   </div>
