@@ -16,9 +16,8 @@
 
   <p>注文ステータス</p>
   <%= f.select :status, Order.statuses.keys.map {|k| [t("orders.status.#{k}"), k]},class: "select-default" %>
-  <%#= f.collection_select :status, Order.statuses.keys, {}, class: "select-default" %>
   <%= f.submit '更新', class: "btn btn-success" %>
-<% end %>
+
 
 <table class="table table-bordered">
   <thead>
@@ -38,12 +37,14 @@
       <td><%= order_item.piece %></td>
       <td><%= order_item.taxed_price * order_item.piece %></td>
       <td>
-        <%#= f.select :production_status, order_item.production_status.keys.to_a, include_blank: true %>
+        <%= f.select :status, OrderItem.production_statuses.key.map {|k| [t("order_items.production_status.#{k}"), k]},class: "select-default" %>
+        <%= f.submit '更新', class: "btn btn-success" %>
       </td>
     </tr>
      <% end %>
   </tbody>
 </table>
+<% end %>
 
 <p>商品合計</p>
 <p>配達送料</p>
