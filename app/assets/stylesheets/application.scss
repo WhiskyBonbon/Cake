@@ -22,6 +22,19 @@
     box-sizing: border-box;
 }
 
+.header {
+  background-image: url(header_image.jpeg);
+  background-size: cover;
+  background-color:rgba(255,255,255,0.4);
+  background-blend-mode:lighten;
+}
+
+.footer {
+  background-image: url(header_image.jpeg);
+  background-color:rgba(255,255,255,0.4);
+  background-blend-mode:lighten;
+}
+
 .nav-item {
   padding: 15px;
 }
@@ -30,12 +43,25 @@
   padding: 5px;
 }
 
+.header_bottom {
+  display: flex;
+  border-bottom-style: ridge;
+  border-bottom-color: #FF9999;
+  justify-content: space-between;
+}
+
 .search {
   text-align: right;
   padding-right: 3rem;
   padding-bottom: 1rem;
-  border-bottom-style: ridge;
-  border-bottom-color: #FF9999;
+}
+
+.welcome {
+  margin-left: 4rem;
+  font-family:Droid Sans;
+  font-style: italic;
+  color: darkred;
+  margin-bottom: -0.5rem;
 }
 
 .navbar {

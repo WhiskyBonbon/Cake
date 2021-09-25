@@ -17,7 +17,7 @@
   <body>
     <div class="footerFixed">
 
-    <header>
+    <header class="header">
       <nav class="navbar navbar-expand-lg navbar-lignt bg-lignt">
         <div class="container-fluid">
 
@@ -73,7 +73,7 @@
                     <%= link_to "商品一覧", items_path, class: "btn btn-danger" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-success" %>
+                    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success" %>
                   </li>
                   <li class="nav-item">
                     <%= link_to "ログイン", new_user_session_path, class: "btn btn-success" %>
@@ -87,11 +87,21 @@
       </nav>
 
       <!--検索フォーム-->
-      <div class='search'>
-        <%= form_with url: root_path, method: :get, local: true do |f| %>
+      <div class='header_bottom'>
+        <label class="welcome">
+          <% if user_signed_in? %>
+            <%= "ようこそ、#{current_user.family_name}さん！" %>
+          <% else %>
+            <% "" %>
+          <% end %>
+        </label>
+
+        <div class="search">
+          <%= form_with url: root_path, method: :get, local: true do |f| %>
             <%= f.text_field '', placeholder:"商品を検索" %>
             <%= f.submit '🔍︁' %>
-        <% end %>
+          <% end %>
+        </div>
       </div>
 
     </header>
@@ -100,7 +110,7 @@
       <%= yield %>
     </main>
 
-    <footer>
+    <footer class="footer">
       <span><%= link_to "", new_admin_manager_session_path, class:"fas fa-cog" %></span>
     </footer>
 

@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)   #ログイン後の遷移先を条件分岐
     case resource
     when Manager
-      admin_customers_path  #後ほど admin_orders_path に変更
+      admin_orders_path  
     when User
       root_path
     end
