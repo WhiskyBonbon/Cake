@@ -13,10 +13,10 @@
    <% @cart_items.each do |cart_item| %>
     <tr>
      <td><%= cart_item.item.name %></td>
-     <td><%= (cart_item.item.price*1.1).round.to_s %></td>
-     <td><%= cart_item.piece %></td>
-     <td><%= cart_item.item.price * cart_item.piece %></td>
-     <% cart_item.item.price = (cart_item.item.price*1.1).round.to_s %>
+     <td><%= (cart_item.item.price*1.1).round.to_s %>円</td>
+     <td><%= cart_item.piece %>個</td>
+     <td><%= (cart_item.item.price * cart_item.piece * 1.1).round.to_s %>円</td>
+     <% cart_item.item.price = (cart_item.item.price * 1.1).round.to_s %>
      <% price = cart_item.item.price * cart_item.piece %>
      <% sum += price %>
     </tr>
@@ -34,16 +34,16 @@
   </thead>
   <tbody>
    <tr>
-    <td><%= @order.postage %></td>
+    <td><%= @order.postage %>円</td>
     <td><%= sum %>円</td>
         <% @order.order_amount = sum + @order.postage %>
-    <td><%= @order.order_amount %></td>
+    <td><%= @order.order_amount %>円</td>
    </tr>
   </tbody>
  </table>
 
  <h2>お支払い方法</h2>
-  
+  <%= @order.payment_method %>
 
  <h2>お届け先</h2>
  <%= @order.postal_code %>

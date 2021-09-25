@@ -1,5 +1,11 @@
 <%= flash[:notice] %>
-<h3 style="margin:20px 0px 20px 200px;">マイページ</h3>
+<div class="container-fluid">
+　<div class="row" style="margin:30px 0px 40px 50px">
+    <div class="col-lg-2">
+      <h3 style="background-color: #FFE28C;vertical-align: middle;text-align: center;">注文履歴一覧</h>
+    </div>
+  </div>
+</div>
 <div class="container-fluid">
   <div class="row">
     <h4 style="width: 120px; margin:0px 0px 0px 45px;">登録情報</h4><%= link_to "編集する", edit_customers_path, class: "btn btn-success" %>
@@ -11,27 +17,27 @@
 <div class="col-7 ml-3">
   <table class="table table-bordered">
     <tr>
-      <td style="width: 200px;background-color: #DCDCDC;">氏名</td>
+      <td style="width: 200px;background-color: #FFE28C;">氏名</td>
       <td><%= "#{@customer.family_name}　#{@customer.first_name}"  %></td>
     </tr>
     <tr>
-        <td style="background-color: #DCDCDC">カナ</td>
+        <td style="background-color: #FFE28C">カナ</td>
         <td><%= "#{@customer.k_family_name}　#{@customer.k_first_name}" %></td>
     </tr>
     <tr>
-      <td style="background-color: #DCDCDC">郵便番号</td>
+      <td style="background-color: #FFE28C">郵便番号</td>
       <td><%= @customer.postal_code %></td>
     </tr>
       <tr>
-        <td style="background-color: #DCDCDC">住所</td>
+        <td style="background-color: #FFE28C">住所</td>
         <td><%= @customer.address %></td>
     </tr>
     <tr>
-      <td style="background-color: #DCDCDC">電話番号</td>
+      <td style="background-color: #FFE28C">電話番号</td>
       <td><%= @customer.phone_number %></td>
     </tr>
     <tr>
-      <td style="background-color: #DCDCDC">メールアドレス</td>
+      <td style="background-color: #FFE28C">メールアドレス</td>
       <td><%= @customer.email %></td>
     </tr>
   </table>

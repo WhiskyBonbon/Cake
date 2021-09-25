@@ -1,12 +1,3 @@
-<%= form_with model: @order, url: check_path, local:true do |f| %>
-<%= f.label :payment, "支払い方法" %>
-<br>
-<%= f.radio_button :payment_method, :クレジットカード %>
-<%= f.label :payment_method, "クレジットカード", {value: :"0" , style: "display: inline-block;"} %>
-<br>
-<%= f.radio_button :payment_method, :銀行振込 %>
-<%= f.label :payment_method, "銀行振込", {value: :"1", style: "display: inline-block;"} %>
-<br>
 <div class="container">
   <div class="column">
     <h4 class="order_title">注文情報入力</h4>
@@ -17,13 +8,13 @@
       <h5 class="order_sub_title"><strong>支払方法</strong></h5>
         <p>
           <span class="order_cus_title">
-            <%= f.radio_button :payment_method, :"0" %>
-            <%= f.label :payment_method, "銀行振込", {value: :"0", style: "display: inline-block;"} %>
+            <%= f.radio_button :payment_method, :クレジットカード %>
+            <%= f.label :payment_method, "クレジットカード", {value: :"0" , style: "display: inline-block;"} %>
           </span>
           <br>
           <span class="order_cus_title">
-            <%= f.radio_button :payment_method, :"1" %>
-            <%= f.label :payment_method, "クレジットカード", {value: :"1", style: "display: inline-block;"} %>
+            <%= f.radio_button :payment_method, :銀行振込 %>
+            <%= f.label :payment_method, "銀行振込", {value: :"1", style: "display: inline-block;"} %>
           </span>
         </p>
     </div>

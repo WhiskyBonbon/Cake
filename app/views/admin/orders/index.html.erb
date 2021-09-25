@@ -1,13 +1,13 @@
 <div class="container">
 　<div class="row" style="margin:30px 50px 40px 0px">
     <div class="col-lg-3">
-      <h3 style="background-color: #DCDCDC;vertical-align: middle;text-align: center;">注文履歴一覧</h>
+      <h3 style="background-color: #FFE28C;vertical-align: middle;text-align: center;">注文履歴一覧</h>
     </div>
   </div>
   <div class="row" style="margin:30px 50px 40px 0px">
     <div class="col-lg-11">
       <table class="table">
-        <thead class="thead-light">
+        <thead style="background-color: #FFE28C;">
           <tr>
             <th class="col-lg-3">購入日時</th>
             <th>購入者</th>
@@ -15,9 +15,8 @@
             <th>注文ステータス</th>
           </tr>
         </thead>
-        
         <tbody>
-          <% @orders.each do|order| %>
+          <% @orders.each do |order| %>
             <tr>
               <td><%= link_to "#{order.created_at.strftime("%Y/%m/%d %H:%M:%S")}", admin_order_path(order.id) %></td>
               <td><%= "#{order.user.family_name} #{order.user.first_name}"  %></td>
