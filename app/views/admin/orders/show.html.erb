@@ -1,66 +1,98 @@
-<h2>注文履歴詳細</h2>
-<%= form_with model:[:admin, @order], method: :patch, local:true do |f| %>
+<div class="container">
+  <div class="row" style="margin:30px 50px 40px 20px">
+    <div class="col-lg-4 offset-lg-1">
+      <h3 style="background-color: #FFE28C;vertical-align: middle;text-align: center;">注文履歴詳細</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-10">
+      <table>
+        <tr>
+          <th style="padding:10px">購入者</th>
+          <td style="padding-left:10px"><%= @order.name %></td>
+        </tr>
+        <tr>
+          <th style="padding:10px">注文日</th>
+          <td style="padding-left:10px"><%= @order.created_at.strftime('%y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th style="padding:10px">配達先</th>
+          <td style="padding-left:10px">
+            <%= @order.postal_code %><%= @order.address %>
+          </td>
+        </tr>
+        <tr>
+          <th style="padding:10px">支払方法</th>
+          <td style="padding-left:10px"><%= @order.payment_method %></td>
+        </tr>
+        <tr>
+          <th style="padding:10px">注文ステータス</th>
+          <td style="padding-left:10px">
+            <%= form_with model:[:admin, @order], method: :patch, local:true do |f| %>
+            <%= f.select :status, Order.statuses.keys, {},{class: "select-default"} %>
+            <%= f.submit '更新', class: "btn btn-success btn-sm" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 
-  <p>購入者</p>
-  <%= @order.name %>
 
-  <p>注文日</p>
-  <%= @order.created_at.strftime('%y/%m/%d') %>
+   <div class="row" style="padding-top:20px">
+    <div class="col-lg-9">
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="background-color: #FFE28C;width:150px;">商品名</th>
+            <th style="background-color: #FFE28C;width:150px;">単価（税込）</th>
+            <th style="background-color: #FFE28C;width:150px;">数量</th>
+            <th style="background-color: #FFE28C;width:150px;">小計</th>
+            <th style="background-color: #FFE28C;width:150px;">制作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% sum = 0 %>
+          <% @order_items.each do |order_item| %>
+          <tr>
+            <td><%= order_item.item.name %></td>
+            <td><%= order_item.taxed_price %>円</td>
+            <td><%= order_item.piece %>個</td>
+            <td><%= order_item.taxed_price * order_item.piece %>円</td>
+            <td>
+                <%= form_with model: [:admin, order_item], method: :patch, local:true do |f| %>
+                <% if @order.status == '入金待ち' %>
+                <%= f.select :production_status, {'制作不可': 0} %>
+                <%= f.submit '更新', class: "btn btn-success" %>
+                <% else %>
 
-  <p>配達先</p>
-  <%= @order.postal_code %><%= @order.address %>
-  <%= @order.name %>
-
-  <p>支払方法</p>
-  <%= @order.payment_method %>
-
-  <p>注文ステータス</p>
-  <%= f.select :status, Order.statuses.keys, {},{class: "select-default"} %>
-  <%= f.submit '更新', class: "btn btn-success" %>
-  
-<% end %>
-
-
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>単価（税込）</th>
-      <th>数量</th>
-      <th>小計</th>
-      <th>制作ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% sum = 0 %>
-    <% @order_items.each do |order_item| %>
-    <tr>
-      <td><%= order_item.item.name %></td>
-      <td><%= order_item.taxed_price %></td>
-      <td><%= order_item.piece %></td>
-      <td><%= order_item.taxed_price * order_item.piece %></td>
-      <td>
-        <%= form_with model: [:admin, order_item], method: :patch, local:true do |f| %>
-        <% if @order.status == '入金待ち' %>
-        <%= f.select :production_status, {'制作不可': 0} %>
-        <%= f.submit '更新', class: "btn btn-success" %>
-        <% else %>
-
-        <%= f.select :production_status, OrderItem.production_statuses.keys, {} , {class: "select-default"} %>
-        <%= f.submit '更新', class: "btn btn-success" %>
-        <% end %>
-        <% end %>
-      </td>
-      <% price = order_item.taxed_price * order_item.piece %>
-      <% sum += price %>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<p>商品合計</p>
-<%= sum %>
-<p>配達送料</p>
-<%= @order.postage %>円
-<p>請求額合計</p>
-<%= @order.order_amount %>円
+                <%= f.select :production_status, OrderItem.production_statuses.keys, {} , {class: "select-default"} %>
+                <%= f.submit '更新', class: "btn btn-success" %>
+                <% end %>
+                <% end %>
+            </td>
+                <% price = order_item.taxed_price * order_item.piece %>
+                <% sum += price %>
+          </tr>
+          <% end %>
+         </tbody>
+      </table>
+    </div>
+    <div class="col-lg-3" style="padding:30px 0px 0px 30pxpx">
+      <table>
+        <tr>
+          <th style="padding:10px">商品合計</th>
+          <td style="padding-left:10px"><%= sum %>円</td>
+        </tr>
+        <tr>
+          <th style="padding:10px">配達送料</th>
+          <td style="padding-left:10px"><%= @order.postage %>円</td>
+        </tr>
+        <tr>
+          <th style="padding:10px">請求額合計</th>
+          <td style="padding-left:10px"><strong><%= @order.order_amount %>円</strong></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
