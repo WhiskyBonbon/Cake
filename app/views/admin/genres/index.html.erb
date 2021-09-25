@@ -10,7 +10,7 @@
       <div class="col-lg-2 d-flex align-items-center">ジャンル名</div>
       <div class="col-lg-3"><%= f.text_field :name,class:"form-control", placeholder:"ジャンル名" %></div>
       <div class="col-lg-2 d-flex justify-content-center align-items-right">
-        <%= f.submit '新規登録',class:"btn btn-success"%>
+        <%= f.submit '新規登録',class:"btn btn-warning"%>
       </div>
     </div>
   <% end %>
@@ -30,7 +30,7 @@
       <tr>
         <td class="align-middle"><%= genre.name %></td>
         <td >
-          <div class="text-center"><%= link_to "編集する",edit_admin_genre_path(genre.id),class:"btn btn-success" %></div>
+          <div class="text-center"><%= link_to "編集する",edit_admin_genre_path(genre.id),class:"btn btn-outline-warning" %></div>
         </td>
       </tr>
     <% end %>

@@ -13,8 +13,15 @@ class Admin::OrdersController < ApplicationController
 
 
   def index
-    @orders = Order.page(params[:page]).reverse_order
+    if params[:id]
+      @orders = User.find(params[:id]).orders.page(params[:page]).reverse_order
+    else
+      @orders = Order.page(params[:page]).reverse_order
+    end
   end
+  
+  
+  
 
 
 private
