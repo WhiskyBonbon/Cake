@@ -7,7 +7,6 @@
 
   <p style="text-align:center">
     <%= link_to "退会しない", mypage_path, class: "btn btn-primary" %>
-    <%= link_to "退会する", deleted_path,method: :patch, class: "btn btn-danger" %>
+    <%= link_to "退会する", deleted_path,method: :patch,"data-confirm" => "退会手続きを行います", class: "btn btn-danger" %>
   </p>
-
 </div>
