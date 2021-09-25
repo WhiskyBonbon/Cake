@@ -29,8 +29,8 @@
           <th style="padding:10px">注文ステータス</th>
           <td style="padding-left:10px">
             <%= form_with model:[:admin, @order], method: :patch, local:true do |f| %>
-            <%= f.select :status, Order.statuses.keys, {},{class: "select-default"} %>
-            <%= f.submit '更新', class: "btn btn-success btn-sm" %>
+              <%= f.select :status, Order.statuses.keys, {},{class: "select-default"} %>
+              <%= f.submit '更新', class: "btn btn-success btn-sm" %>
             <% end %>
           </td>
         </tr>
@@ -63,11 +63,11 @@
                 <%= form_with model: [:admin, order_item], method: :patch, local:true do |f| %>
                 <% if @order.status == '入金待ち' %>
                 <%= f.select :production_status, {'制作不可': 0} %>
-                <%= f.submit '更新', class: "btn btn-success" %>
+                <%= f.submit '更新', class: "btn btn-success btn-sm" %>
                 <% else %>
 
                 <%= f.select :production_status, OrderItem.production_statuses.keys, {} , {class: "select-default"} %>
-                <%= f.submit '更新', class: "btn btn-success" %>
+                <%= f.submit '更新', class: "btn btn-success btn-sm" %>
                 <% end %>
                 <% end %>
             </td>
