@@ -7,9 +7,17 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order.update(order_params)
-    redirect_to admin_order_path
-    
+    @order_items = @order.order_items
+    if @order.update(order_params)
+      @order_items.update_all(production_status: "制作待ち") if @order.status == "入金確認"
+      #enumは数字じゃなくて文字
+      #uodateはカラムじゃなくてデータそのものを取得しないと動かない
+      redirect_to admin_order_path
+    else
+      redirect_to admin_order_path
+
+    end
+
   end
 
 
@@ -20,9 +28,9 @@ class Admin::OrdersController < ApplicationController
       @orders = Order.page(params[:page]).reverse_order
     end
   end
-  
-  
-  
+
+
+
 
 
 private

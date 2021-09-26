@@ -61,14 +61,14 @@
             <td><%= order_item.taxed_price * order_item.piece %>円</td>
             <td>
                 <%= form_with model: [:admin, order_item], method: :patch, local:true do |f| %>
-                <% if @order.status == '入金待ち' %>
-                <%= f.select :production_status, [:制作不可] %>
-                <%= f.submit '更新', class: "btn btn-success btn-sm" %>
-                <% else %>
+                <%# if @order.status == '入金待ち' %>
+                <%#= f.select :production_status, [:制作不可] %>
+                <%#= f.submit '更新', class: "btn btn-success btn-sm" %>
+                <%# else %>
 
                 <%= f.select :production_status, OrderItem.production_statuses.keys, {} , {class: "select-default"} %>
                 <%= f.submit '更新', class: "btn btn-success btn-sm" %>
-                <% end %>
+                <%# end %>
                 <% end %>
             </td>
                 <% price = order_item.taxed_price * order_item.piece %>
