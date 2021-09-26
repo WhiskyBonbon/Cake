@@ -62,7 +62,7 @@
             <td>
                 <%= form_with model: [:admin, order_item], method: :patch, local:true do |f| %>
                 <% if @order.status == '入金待ち' %>
-                <%= f.select :production_status, {'制作不可': 0} %>
+                <%= f.select :production_status, [:制作不可] %>
                 <%= f.submit '更新', class: "btn btn-success btn-sm" %>
                 <% else %>
 
