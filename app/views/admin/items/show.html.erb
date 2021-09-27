@@ -1,0 +1,43 @@
+<div class="detail-ad-item">
+  <h2 class="detail-ad-item-title">商品詳細</h2>
+  <div class="detail-ad-items">
+    <p><%= attachment_image_tag @item, :image, :fill, 200, 200, format:'jpg' %></p>
+    <!--参考URL：https://qiita.com/kazuki_k/items/ddb43a996704a7bc264e-->
+    <table class="table table-borderless item-edit-table">
+      <tbody>
+        <tr>
+          <td style="width:50px">商品名</td>
+          <td style="width:200px"><%= @item.name %></td>
+        </tr>
+        <tr>
+          <td>商品説明</td>
+          <td><%= @item.explanation %></td>
+        </tr>
+        <tr>
+          <td>ジャンル</td>
+          <td><%= @item.genre.name %></td>
+        </tr>
+        <tr>
+          <td>税込価格</br>（税抜価格）</td>
+          <td><%= (@item.price*1.1).round.to_s %>（<%= @item.price %>）円</td>
+        </tr>
+        <tr>
+          <td>販売ステータス</td>
+          <% if @item.is_active == true %>
+            <% sale_status = "販売中" %>
+          <% else %>
+            <% sale_status = "販売停止中" %>
+          <% end %>
+          <td class="item-sales-status"><%= sale_status %></td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+  <div class="d-flex justify-content-center">
+    <%= link_to edit_admin_item_path(@item) do %>
+      <p class="edit-item-button btn btn-success", colspan=2"">編集する</p>
+    <% end %>
+  </div>
+</div>

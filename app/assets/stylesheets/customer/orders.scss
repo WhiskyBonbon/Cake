@@ -1,3 +1,40 @@
 // Place all the styles related to the customer/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.order_title {
+  margin: 2rem 0;
+  background-color: #DDDDDD;
+  width: 12rem;
+  text-align: center;
+}
+
+.order_sub_title {
+  margin-left: 2rem;
+}
+
+.order_cus_title {
+  margin-left: 4rem;
+}
+
+.order_cus_item {
+  margin-left: 5rem;
+}
+
+.order_cus_item label {
+  width: 13rem;
+}
+
+.order_btn {
+  margin-left: 25rem;
+  margin-top: 2rem;
+}
+
+.check_detail {
+  margin-top: 3rem;
+}
+
+.check_detail label {
+  margin-left: 5rem;
+  margin-bottom: 2rem;
+}

@@ -1,3 +1,93 @@
 // Place all the styles related to the customer/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.title {
+  font-family: 'Kokoro', cursive;
+  font-size: 4rem;
+  margin: 1rem auto;
+}
+
+.caption {
+  font-family: 'Kokoro', cursive;
+  margin: auto;
+}
+
+.cap {
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.about_image {
+  margin: 2rem auto;
+  border: solid 1px;
+  border-style: ridge;
+}
+
+table.genre_search {
+  border-collapse: collapse;
+  text-align: center;
+  border: solid 2px;
+  border-style: ridge;
+  margin: 3rem auto;
+  table-layout: auto;
+  width: 60%;
+  border-color: white;
+}
+
+.genre_search_thead {
+  border: solid 2px;
+  border-style: ridge;
+  border-color: white;
+}
+
+.genre_search_th {
+  background-color: #fce043;
+  padding: 3px;
+}
+
+.genre_search_td {
+  padding: 5px;
+}
+
+.home_image {
+  font-family: 'Kokoro', cursive;
+  text-align: center;
+  width: 750px;
+  height: 450px;
+  margin: 3rem;
+  padding-top: 7rem;
+  border: solid 1px;
+  border-style: ridge;
+  background-image: url("home_image.jpg");
+  background-size: cover;
+}
+
+.home_text {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  font-size: 17px;
+  background-color: rgba(255,255,255,0.7);
+  background-blend-mode:lighten
+}
+
+.new_items {
+  display: flex;
+}
+
+.new_item {
+  margin: 5px;
+  border: solid 1px;
+  border-style: ridge;
+}
+
+.detail {
+  padding-left: 5px;
+}
+
+.all_items {
+  text-align: right;
+  padding-right: 4.3rem;
+  margin: 1rem 0;
+}

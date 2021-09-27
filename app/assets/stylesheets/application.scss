@@ -1,0 +1,101 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.header {
+  background-image: url(header_image.jpeg);
+  background-size: cover;
+  background-color:rgba(255,255,255,0.4);
+  background-blend-mode:lighten;
+}
+
+.footer {
+  background-image: url(header_image.jpeg);
+  background-color:rgba(255,255,255,0.4);
+  background-blend-mode:lighten;
+}
+
+.nav-item {
+  padding: 15px;
+}
+
+.logo-image {
+  padding: 5px;
+}
+
+.header_bottom {
+  display: flex;
+  border-bottom-style: ridge;
+  border-bottom-color: #FF9999;
+  justify-content: space-between;
+}
+
+.search {
+  text-align: right;
+  padding-right: 3rem;
+  padding-bottom: 1rem;
+}
+
+.welcome {
+  margin-left: 4rem;
+  font-family:Droid Sans;
+  font-style: italic;
+  color: darkred;
+  margin-bottom: -0.5rem;
+}
+
+.navbar {
+  margin: -2px 0px ;
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 70px;
+  border-top-style: ridge;
+  border-top-color: #FF9999;
+}
+
+.footerFixed {
+  min-height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+  padding-bottom: 100px;
+}
+
+.nav-item {
+  font-family:Droid Sans;
+}
+
+.index-item {
+  display: flex;
+}
+
+.container-item {
+  display: flex;
+}
+
+.form-group-mypage{
+  margin-bottom: 1rem;
+}

@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     devise_for :managers, controllers: {
-      sessions: 'admins/sessions',
-      registrations: 'admins/registrations',
-      passwords: 'admins/passwords'
+      sessions: 'admin/admins/sessions',
+      registrations: 'admin/admins/registrations',
+      passwords: 'admin/admins/passwords'
     }
     resources :items, except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
@@ -15,16 +15,16 @@ Rails.application.routes.draw do
 
   scope module: 'customer' do
     devise_for :users, controllers: {
-      sessions: 'customers/sessions',
-      registrations: 'customers/registrations',
+      sessions: 'customer/customers/sessions',
+      registrations: 'customer/customers/registrations',
       passwords: 'customers/passwords'
     }
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:create, :index, :update, :destroy]
     delete '/cart_items' => 'cart_items#all_destroy', as: 'all_destroy'
-    resources :orders, only: [:new, :create, :index, :show]
     post 'orders/check' => 'orders#check', as: 'check'
     get 'orders/thanks' => 'orders#thanks', as: 'thanks'
+    resources :orders, only: [:new, :create, :index, :show]
     resource :customers, only: [:edit, :update]
     get 'customers/mypage' => 'customers#show', as: 'mypage'
     get 'customers/delete' => 'customers#delete', as: 'delete'
@@ -33,8 +33,6 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
   end
-  
-  
-  
-  
+
+
 end

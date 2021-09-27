@@ -1,3 +1,68 @@
 // Place all the styles related to the admin/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.items-all {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.items-top {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.items-index-title {
+  background-color: #FFFFDD;
+  width: 180px;
+  text-align: center;
+}
+
+.items-create {
+  color: gray;
+}
+
+.regi-new-item {
+  margin: 10px auto;
+  width: 90%;
+}
+
+.regi-new-item-title {
+  background-color: #FFFFDD;
+  width: 220px;
+  height: 40px;
+  text-align: center;
+}
+
+.new-item-table {
+  margin: 0 auto;
+  width: 600PX;
+}
+
+.detail-ad-item {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.detail-ad-item-title {
+  background-color: #FFFFDD;
+  width: 220px;
+  height: 40px;
+  text-align: center;
+  display: block;
+  margin: 10px 0px;
+}
+
+.detail-ad-items {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.item-edit-table {
+  font-size: 1.2em;
+}
+
+.item-sales-status {
+  color: #33CC00;
+}

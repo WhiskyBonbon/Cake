@@ -7,9 +7,116 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet">
+
   </head>
 
+
   <body>
-    <%= yield %>
+    <div class="footerFixed">
+
+    <header class="header">
+      <nav class="navbar navbar-expand-lg navbar-lignt bg-lignt">
+        <div class="container-fluid">
+
+          <div class="col-3">
+           <div class=logo-image>
+             <%= link_to root_path do %>
+               <%= image_tag 'NaganoCake_logo.jpeg', size:'220x70' %>
+             <% end %>
+           </div>
+          </div>
+
+          <div class="col-9">
+            <div class="collapse navbar-collapse">
+              <% if admin_manager_signed_in? %>
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <%= link_to "商品一覧", admin_items_path, class: "btn btn-danger" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "会員一覧", admin_customers_path, class: "btn btn-danger" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "注文履歴一覧", admin_orders_path, class: "btn btn-danger" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-danger" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ログアウト", destroy_admin_manager_session_path, method: :delete, class: "btn btn-outline-success" %>
+                  </li>
+                </ul>
+              <% elsif user_signed_in? %>
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <%= link_to "マイページ", mypage_path, class: "btn btn-outline-danger" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "商品一覧", items_path, class: "btn btn-danger" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "カート", cart_items_path, class: "btn btn-danger" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-success" %>
+                  </li>
+                </ul>
+              <% else %>
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <%= link_to "About", about_path, class: "btn btn-outline-danger" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "商品一覧", items_path, class: "btn btn-danger" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ログイン", new_user_session_path, class: "btn btn-success" %>
+                  </li>
+                </ul>
+              <% end %>
+            </div>
+          </div>
+
+        </div>
+      </nav>
+
+      <!--検索フォーム-->
+      <div class='header_bottom'>
+        <label class="welcome">
+          <% if user_signed_in? %>
+            <%= "ようこそ、#{current_user.family_name}さん！" %>
+          <% else %>
+            <% "" %>
+          <% end %>
+        </label>
+
+        <div class="search">
+          <%= form_with url: root_path, method: :get, local: true do |f| %>
+            <%= f.text_field '', placeholder:"商品を検索" %>
+            <%= f.submit '🔍︁' %>
+          <% end %>
+        </div>
+      </div>
+
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer class="footer">
+      <span><%= link_to "", new_admin_manager_session_path, class:"fas fa-cog" %></span>
+    </footer>
+
+    </div>
   </body>
+
+
+
 </html>

@@ -1,0 +1,41 @@
+<div class="container">
+
+  <p class="notice"><%= notice %></p>
+
+  <div class="row">
+    <h4 class="cus_name"><%= @customer.family_name %><%= @customer.first_name %> さんの会員詳細</h4>
+  </div>
+
+  <div class="row">
+    <table class="cus_infoTable">
+        <tr><td>会員ID</td><td><%= @customer.id %></td></tr>
+        <tr><td>氏名</td><td><%= @customer.family_name %> <%= @customer.first_name %></td></tr>
+        <tr><td>フリガナ</td><td><%= @customer.k_family_name %> <%= @customer.k_first_name %></td></tr>
+        <tr><td>郵便番号</td><td><%= @customer.postal_code %></td></tr>
+        <tr><td>住所</td><td><%= @customer.address %></td></tr>
+        <tr><td>電話番号</td><td><%= @customer.phone_number %></td></tr>
+        <tr><td>メールアドレス</td><td><%= @customer.email %></td></tr>
+        <tr>
+          <td>会員ステータス</td>
+          <td>
+            <% if @customer.is_deleted == false %>
+              <label style="color:green;">有効</label>
+            <% else %>
+              <label style="color:#CCCCCC;">退会</label>
+            <% end %>
+          </td>
+        </tr>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="cus_items">
+    <div class="cus_item">
+      <%= link_to "編集する", edit_admin_customer_path(@customer), class:"btn btn-success btn-sm" %>
+    </div>
+    <div class="cus_item">
+      <%= link_to "注文履歴一覧を見る", admin_orders_path(id:@customer.id), class:"btn btn-primary btn-sm" %>
+    </div>
+    </div>
+  </div>
+</div>

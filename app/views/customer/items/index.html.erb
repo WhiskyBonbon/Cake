@@ -1,0 +1,21 @@
+<div class="row container-fluid">
+  <div class="col-3">
+    <%= render "customer/items/search", genres: @genres %>
+  </div>
+
+  <div class="col-9">
+    <h2>商品一覧（全<%= @items.count %>件）</h2>
+    <div class="new-items">
+      <% @items.each do |item| %>
+        <div class="new-item">
+          <%= link_to item_path(item) do %>
+            <p><%= attachment_image_tag item, :image, :fill, 210, 140, format: 'jpg' %></p>
+            <p class="detail"><%= item.name %></p>
+            <p class="detail">¥ <%= item.price %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="next-items"><%= paginate @items %></div>

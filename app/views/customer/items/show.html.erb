@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-3">
+    <%= render "customer/items/search", genres: @genres %>
+  </div>
+  <div class="col-9">
+    <%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
+    <div class="container-show">
+      <div class = "container-show-image">
+        <p><%= attachment_image_tag @item, :image, :fill, 200, 200, format: 'jpg' %></p>
+      </div>
+      <div class="container-show-text">
+        <h3 class="detail-text detail-text-title"><%= @item.name %><h3>
+        <p class="detail-text detail-text-body"><%= @item.explanation %></p>
+        <p class="detail-text detail-text-body">¥ <%= (@item.price*1.10).round.to_s %>（税込）<p>
+        <!--参考：https://sakurawi.hateblo.jp/entry/hidden_field-->
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.select :piece, @number %>
+        <%= f.submit "カートに入れる", class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+  </div>
+</div>
